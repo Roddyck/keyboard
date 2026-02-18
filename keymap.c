@@ -16,23 +16,28 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include "keycodes.h"
 #include QMK_KEYBOARD_H
+
+#ifdef OLED_ENABLE
+#include "crab.c"
+#endif
 
 // colemak-dh tapholds
 #define TH_Z LALT_T(KC_Z)
 #define TH_X LGUI_T(KC_X)
 #define TH_C LCTL_T(KC_C)
-#define TH_D LSFT_T(KC_D)
+//#define TH_D LSFT_T(KC_D)
 
-#define TH_H RSFT_T(KC_H)
+//#define TH_H RSFT_T(KC_H)
 #define TH_COMM RCTL_T(KC_COMM)
 #define TH_DOT RGUI_T(KC_DOT)
 #define TH_SLS RALT_T(KC_SLSH)
 
 // qwerty tapholds
-#define TH_V LSFT_T(KC_V)
+//#define TH_V LSFT_T(KC_V)
 
-#define TH_M RSFT_T(KC_M)
+//#define TH_M RSFT_T(KC_M)
 
 // layer tapholds
 #define MED_ESC LT(_MEDIA, KC_ESC)
@@ -40,7 +45,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define SYM_ENT LT(_SYM, KC_ENT)
 #define NUM_BSPC LT(_NUM, KC_BSPC)
 #define FUN_DEL LT(_FUN, KC_DEL)
-#define MSE_TAB LT(_MOUSE, KC_TAB)
+//#define MSE_TAB LT(_MOUSE, KC_TAB)
 
 enum layer_names {
      _BASE,
@@ -50,7 +55,7 @@ enum layer_names {
      _NAV,
      _MEDIA,
      _FUN,
-     _MOUSE
+   //  _MOUSE
 };
 
 enum custom_keycodes {
@@ -103,7 +108,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LCTL, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_LEFT, KC_DOWN,   KC_UP,KC_RIGHT, XXXXXXX, XXXXXXX,
+      KC_LCTL, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, KC_LEFT, KC_DOWN, KC_UP,  KC_RIGHT, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LSFT, KC_LALT, KC_LGUI, KC_LCTL, KC_LSFT, XXXXXXX,                      KC_INS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -127,7 +132,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX, RM_HUEU, RM_SATU, RM_VALU, XXXXXXX, XXXXXXX,                      KC_MPRV, KC_VOLD, KC_VOLU, KC_MNXT, XXXXXXX, XXXXXXX,
+      XXXXXXX, RM_HUEU, RM_SATU, RM_VALU, XXXXXXX, XXXXXXX,                      XXXXXXX, KC_MPRV, KC_VOLD, KC_VOLU, KC_MNXT, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       XXXXXXX, KC_LALT, KC_LGUI, KC_LCTL, KC_LSFT, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -159,17 +164,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                       //`--------------------------'  `--------------------------'
   ),
 
-    [_MOUSE] = LAYOUT_split_3x6_3(
+  //  [_MOUSE] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  //    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LCTL, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      MS_LEFT, MS_DOWN,  MS_UP, MS_RGHT, XXXXXXX, XXXXXXX,
+  //    KC_LCTL, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, MS_LEFT, MS_DOWN, MS_UP,   MS_RGHT, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LSFT, KC_LALT, KC_LGUI, KC_LCTL, KC_LSFT, XXXXXXX,                      MS_WHLL, MS_WHLD, MS_WHLU, MS_WHLR, XXXXXXX, XXXXXXX,
+  //    KC_LSFT, KC_LALT, KC_LGUI, KC_LCTL, KC_LSFT, XXXXXXX,                      MS_WHLL, MS_WHLD, MS_WHLU, MS_WHLR, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          XXXXXXX, XXXXXXX, _______,    MS_BTN2, MS_BTN1, MS_BTN3
+                                      //    XXXXXXX, XXXXXXX, _______,    MS_BTN2, MS_BTN1, MS_BTN3
                                       //`--------------------------'  `--------------------------'
-  ),
+  //),
 };
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
@@ -179,47 +184,53 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case SYM_ENT:
         case NUM_BSPC:
         case FUN_DEL:
-        case MSE_TAB:
-          return 150;
+        //case MSE_TAB:
+        //case TH_D:
+        //case TH_H:
+        //case TH_V:
+        //case TH_M:
+        case TH_C:
+        case TH_COMM:
+          return 180;
         default:
             return TAPPING_TERM;
     }
 }
 
 #ifdef OLED_ENABLE
-static void render_status(void) {
-    oled_write_P(PSTR("Layer\n"), false);
-
-    switch (get_highest_layer(layer_state)) {
-        case _BASE:
-            oled_write_P(PSTR("BASE\n"), false);
-            break;
-        case _QWERTY:
-            oled_write_P(PSTR("QWERT\n"), false);
-            break;
-        case _NAV:
-            oled_write_P(PSTR("NAV\n"), false);
-            break;
-        case _SYM:
-            oled_write_P(PSTR("SYM\n"), false);
-            break;
-        case _NUM:
-            oled_write_P(PSTR("NUM\n"), false);
-            break;
-        case _FUN:
-            oled_write_P(PSTR("FUN\n"), false);
-            break;
-        case _MOUSE:
-            oled_write_P(PSTR("MOUSE\n"), false);
-            break;
-        case _MEDIA:
-            oled_write_P(PSTR("MEDIA\n"), false);
-            break;
-        default:
-            oled_write_P(PSTR("Undef\n"), false);
-            break;
-    }
-}
+// static void render_status(void) {
+//     oled_write_P(PSTR("Layer\n"), false);
+// 
+//     switch (get_highest_layer(layer_state)) {
+//         case _BASE:
+//             oled_write_P(PSTR("BASE\n"), false);
+//             break;
+//         case _QWERTY:
+//             oled_write_P(PSTR("QWERT\n"), false);
+//             break;
+//         case _NAV:
+//             oled_write_P(PSTR("NAV\n"), false);
+//             break;
+//         case _SYM:
+//             oled_write_P(PSTR("SYM\n"), false);
+//             break;
+//         case _NUM:
+//             oled_write_P(PSTR("NUM\n"), false);
+//             break;
+//         case _FUN:
+//             oled_write_P(PSTR("FUN\n"), false);
+//             break;
+//         case _MOUSE:
+//             oled_write_P(PSTR("MOUSE\n"), false);
+//             break;
+//         case _MEDIA:
+//             oled_write_P(PSTR("MEDIA\n"), false);
+//             break;
+//         default:
+//             oled_write_P(PSTR("Undef\n"), false);
+//             break;
+//     }
+// }
 
 static void render_logo(void) {
     static const char PROGMEM crkbd_logo[] = {
@@ -235,12 +246,12 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
         return OLED_ROTATION_180;
     }
 
-    return OLED_ROTATION_270;
+    return rotation;
 }
 
 bool oled_task_user(void) {
     if (is_keyboard_master()) {
-        render_status();
+        oled_render_anim();
     } else {
         render_logo();
     }
