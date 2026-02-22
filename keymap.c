@@ -177,26 +177,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //),
 };
 
-uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case MED_ESC:
-        case NAV_SPC:
-        case SYM_ENT:
-        case NUM_BSPC:
-        case FUN_DEL:
-        //case MSE_TAB:
-        //case TH_D:
-        //case TH_H:
-        //case TH_V:
-        //case TH_M:
-        case TH_C:
-        case TH_COMM:
-          return 180;
-        default:
-            return TAPPING_TERM;
-    }
-}
-
 #ifdef OLED_ENABLE
 // static void render_status(void) {
 //     oled_write_P(PSTR("Layer\n"), false);
