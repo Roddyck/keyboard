@@ -26,11 +26,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // colemak-dh tapholds
 #define TH_Z LALT_T(KC_Z)
 #define TH_X LGUI_T(KC_X)
-#define TH_C LCTL_T(KC_C)
+//#define TH_C LCTL_T(KC_C)
 //#define TH_D LSFT_T(KC_D)
 
 //#define TH_H RSFT_T(KC_H)
-#define TH_COMM RCTL_T(KC_COMM)
+//#define TH_COMM RCTL_T(KC_COMM)
 #define TH_DOT RGUI_T(KC_DOT)
 #define TH_SLS RALT_T(KC_SLSH)
 
@@ -82,11 +82,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
       KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,                         KC_J,    KC_L,    KC_U,    KC_Y,   KC_SCLN, KC_LSFT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_ESC,  KC_A,    KC_R,    KC_S,    KC_T,    KC_G,                         KC_M,    KC_N,    KC_E,    KC_I,    KC_O,   KC_QUOT,
+      KC_LCTL, KC_A,    KC_R,    KC_S,    KC_T,    KC_G,                         KC_M,    KC_N,    KC_E,    KC_I,    KC_O,   KC_QUOT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      L_MACRO, TH_Z,    TH_X,    TH_C,    KC_D,    KC_V,                         KC_K,    KC_H,   TH_COMM, TH_DOT,  TH_SLS,  KC_ESC,
+      L_MACRO, TH_Z,    TH_X,    KC_C,    KC_D,    KC_V,                         KC_K,    KC_H,   KC_COMM, TH_DOT,  TH_SLS,  KC_ESC,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          MED_ESC, NAV_SPC, KC_LSFT,   SYM_ENT, NUM_BSPC, FUN_DEL
+                                          MED_ESC, NAV_SPC, KC_LSFT,   SYM_ENT, NUM_BSPC, FUN_DEL 
                                       //`--------------------------'  `--------------------------'
 
   ),
@@ -95,11 +95,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
       KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,   KC_LBRC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_ESC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                         KC_H,    KC_J,    KC_K,    KC_L,   KC_SCLN, KC_RBRC,
+      KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                         KC_H,    KC_J,    KC_K,    KC_L,   KC_SCLN, KC_RBRC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      L_MACRO, TH_Z,    TH_X,    TH_C,    KC_V,    KC_B,                         KC_N,    KC_M, TH_COMM,   TH_DOT,  TH_SLS,  KC_QUOT,
+      L_MACRO, TH_Z,    TH_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,   TH_DOT,  TH_SLS,  KC_QUOT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          MED_ESC, NAV_SPC, KC_LSFT,   SYM_ENT, NUM_BSPC, FUN_DEL
+                                          MED_ESC, NAV_SPC, KC_LSFT,   SYM_ENT, NUM_BSPC, FUN_DEL 
                                       //`--------------------------'  `--------------------------'
 
   ),
