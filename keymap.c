@@ -44,7 +44,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define NAV_SPC LT(_NAV, KC_SPC)
 #define SYM_ENT LT(_SYM, KC_ENT)
 #define NUM_BSPC LT(_NUM, KC_BSPC)
-#define FUN_DEL LT(_FUN, KC_DEL)
+// #define FUN_DEL LT(_FUN, KC_DEL)
 //#define MSE_TAB LT(_MOUSE, KC_TAB)
 
 enum layer_names {
@@ -54,7 +54,7 @@ enum layer_names {
      _NUM,
      _NAV,
      _MEDIA,
-     _FUN,
+     // _FUN,
    //  _MOUSE
 };
 
@@ -86,7 +86,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       L_MACRO, TH_Z,    TH_X,    KC_C,    KC_D,    KC_V,                         KC_K,    KC_H,   KC_COMM, TH_DOT,  TH_SLS,  KC_ESC,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          MED_ESC, NAV_SPC, KC_LSFT,   SYM_ENT, NUM_BSPC, FUN_DEL 
+                                          MED_ESC, NAV_SPC, KC_LSFT,   SYM_ENT, NUM_BSPC, KC_LCTL 
                                       //`--------------------------'  `--------------------------'
 
   ),
@@ -99,7 +99,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       L_MACRO, TH_Z,    TH_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,   TH_DOT,  TH_SLS,  KC_QUOT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          MED_ESC, NAV_SPC, KC_LSFT,   SYM_ENT, NUM_BSPC, FUN_DEL 
+                                          MED_ESC, NAV_SPC, KC_LSFT,   SYM_ENT, NUM_BSPC, KC_LCTL 
                                       //`--------------------------'  `--------------------------'
 
   ),
@@ -134,7 +134,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       XXXXXXX, RM_HUEU, RM_SATU, RM_VALU, XXXXXXX, XXXXXXX,                      XXXXXXX, KC_MPRV, KC_VOLD, KC_VOLU, KC_MNXT, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX, KC_LALT, KC_LGUI, KC_LCTL, KC_LSFT, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+      XXXXXXX, KC_LALT, KC_LGUI, KC_LCTL, KC_LSFT, XXXXXXX,                      XXXXXXX, KC_BRID, KC_BRIU, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           _______, XXXXXXX, XXXXXXX,   KC_MSTP, KC_MPLY, KC_MUTE
                                       //`--------------------------'  `--------------------------'
@@ -152,17 +152,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                       //`--------------------------'  `--------------------------'
   ),
 
-    [_FUN] = LAYOUT_split_3x6_3(
-  //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      KC_TILD, KC_LBRC,  KC_F7,    KC_F8,    KC_F9, KC_PSCR,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_SCLN, KC_DLR,   KC_F4,    KC_F5,    KC_F6, KC_EQL,                      XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_GRV, KC_AMPR,   KC_F1,    KC_BRID, KC_BRIU, KC_BSLS,                    XXXXXXX, KC_RSFT, KC_RCTL, KC_RGUI, KC_RALT, XXXXXXX,
-  //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_DOT,  KC_0, KC_UNDS,       XXXXXXX, XXXXXXX, _______
-                                      //`--------------------------'  `--------------------------'
-  ),
+  //   [_FUN] = LAYOUT_split_3x6_3(
+  // //,-----------------------------------------------------.                    ,-----------------------------------------------------.
+  //     KC_TILD, KC_LBRC,  KC_F7,    KC_F8,    KC_F9, KC_PSCR,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  // //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
+  //     KC_SCLN, KC_DLR,   KC_F4,    KC_F5,    KC_F6, KC_EQL,                      XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,
+  // //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
+  //     KC_GRV, KC_AMPR,   KC_F1,    KC_BRID, KC_BRIU, KC_BSLS,                    XXXXXXX, KC_RSFT, KC_RCTL, KC_RGUI, KC_RALT, XXXXXXX,
+  // //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
+  //                                         KC_DOT,  KC_0, KC_UNDS,       XXXXXXX, XXXXXXX, _______
+  //                                     //`--------------------------'  `--------------------------'
+  // ),
 
   //  [_MOUSE] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
