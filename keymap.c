@@ -26,18 +26,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // colemak-dh tapholds
 #define TH_Z LALT_T(KC_Z)
 #define TH_X LGUI_T(KC_X)
-//#define TH_C LCTL_T(KC_C)
-//#define TH_D LSFT_T(KC_D)
+// #define TH_C LCTL_T(KC_C)
+// #define TH_D LSFT_T(KC_D)
 
-//#define TH_H RSFT_T(KC_H)
-//#define TH_COMM RCTL_T(KC_COMM)
+// #define TH_H RSFT_T(KC_H)
+// #define TH_COMM RCTL_T(KC_COMM)
 #define TH_DOT RGUI_T(KC_DOT)
 #define TH_SLS RALT_T(KC_SLSH)
 
 // qwerty tapholds
-//#define TH_V LSFT_T(KC_V)
+// #define TH_V LSFT_T(KC_V)
 
-//#define TH_M RSFT_T(KC_M)
+// #define TH_M RSFT_T(KC_M)
 
 // layer tapholds
 #define MED_ESC LT(_MEDIA, KC_ESC)
@@ -45,38 +45,37 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define SYM_ENT LT(_SYM, KC_ENT)
 #define NUM_BSPC LT(_NUM, KC_BSPC)
 // #define FUN_DEL LT(_FUN, KC_DEL)
-//#define MSE_TAB LT(_MOUSE, KC_TAB)
+// #define MSE_TAB LT(_MOUSE, KC_TAB)
 
 enum layer_names {
-     _BASE,
-     _QWERTY,
-     _SYM,
-     _NUM,
-     _NAV,
-     _MEDIA,
-     // _FUN,
-   //  _MOUSE
+  _BASE,
+  _QWERTY,
+  _SYM,
+  _NUM,
+  _NAV,
+  _MEDIA,
+  // _FUN,
+  //  _MOUSE
 };
 
-enum custom_keycodes {
-    L_MACRO = SAFE_RANGE
-};
+enum custom_keycodes { L_MACRO = SAFE_RANGE };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case L_MACRO:
-            if (record->event.pressed) {
-                // switch to qwerty layer
-                layer_invert(_QWERTY);
+  switch (keycode) {
+  case L_MACRO:
+    if (record->event.pressed) {
+      // switch to qwerty layer
+      layer_invert(_QWERTY);
 
-                // change to russian language with gui + y (my system keymap)
-                tap_code16(LGUI(KC_Y));
-            }
-            return false;
+      // change to russian language with gui + y (my system keymap)
+      tap_code16(LGUI(KC_Y));
     }
-    return true;
+    return false;
+  }
+  return true;
 }
 
+// clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
@@ -86,7 +85,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       L_MACRO, TH_Z,    TH_X,    KC_C,    KC_D,    KC_V,                         KC_K,    KC_H,   KC_COMM, TH_DOT,  TH_SLS,  KC_ESC,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          MED_ESC, NAV_SPC, KC_LSFT,   SYM_ENT, NUM_BSPC, KC_LCTL 
+                                          MED_ESC, NAV_SPC, KC_LSFT,   SYM_ENT, NUM_BSPC, KC_LCTL
                                       //`--------------------------'  `--------------------------'
 
   ),
@@ -99,7 +98,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       L_MACRO, TH_Z,    TH_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,   TH_DOT,  TH_SLS,  KC_QUOT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          MED_ESC, NAV_SPC, KC_LSFT,   SYM_ENT, NUM_BSPC, KC_LCTL 
+                                          MED_ESC, NAV_SPC, KC_LSFT,   SYM_ENT, NUM_BSPC, KC_LCTL
                                       //`--------------------------'  `--------------------------'
 
   ),
@@ -130,7 +129,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_MEDIA] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_PSCR, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       XXXXXXX, RM_HUEU, RM_SATU, RM_VALU, XXXXXXX, XXXXXXX,                      XXXXXXX, KC_MPRV, KC_VOLD, KC_VOLU, KC_MNXT, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
@@ -177,10 +176,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //),
 };
 
+// clang-format on
 #ifdef OLED_ENABLE
 // static void render_status(void) {
 //     oled_write_P(PSTR("Layer\n"), false);
-// 
+//
 //     switch (get_highest_layer(layer_state)) {
 //         case _BASE:
 //             oled_write_P(PSTR("BASE\n"), false);
@@ -213,28 +213,30 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // }
 
 static void render_logo(void) {
-    static const char PROGMEM crkbd_logo[] = {
-        0x80, 0x81, 0x82, 0x83, 0x84, 0x85, 0x86, 0x87, 0x88, 0x89, 0x8a, 0x8b, 0x8c, 0x8d, 0x8e, 0x8f, 0x90, 0x91, 0x92, 0x93, 0x94,
-        0xa0, 0xa1, 0xa2, 0xa3, 0xa4, 0xa5, 0xa6, 0xa7, 0xa8, 0xa9, 0xaa, 0xab, 0xac, 0xad, 0xae, 0xaf, 0xb0, 0xb1, 0xb2, 0xb3, 0xb4,
-        0xc0, 0xc1, 0xc2, 0xc3, 0xc4, 0xc5, 0xc6, 0xc7, 0xc8, 0xc9, 0xca, 0xcb, 0xcc, 0xcd, 0xce, 0xcf, 0xd0, 0xd1, 0xd2, 0xd3, 0xd4,
-    0};
-    oled_write_P(crkbd_logo, false);
+  static const char PROGMEM crkbd_logo[] = {
+      0x80, 0x81, 0x82, 0x83, 0x84, 0x85, 0x86, 0x87, 0x88, 0x89, 0x8a,
+      0x8b, 0x8c, 0x8d, 0x8e, 0x8f, 0x90, 0x91, 0x92, 0x93, 0x94, 0xa0,
+      0xa1, 0xa2, 0xa3, 0xa4, 0xa5, 0xa6, 0xa7, 0xa8, 0xa9, 0xaa, 0xab,
+      0xac, 0xad, 0xae, 0xaf, 0xb0, 0xb1, 0xb2, 0xb3, 0xb4, 0xc0, 0xc1,
+      0xc2, 0xc3, 0xc4, 0xc5, 0xc6, 0xc7, 0xc8, 0xc9, 0xca, 0xcb, 0xcc,
+      0xcd, 0xce, 0xcf, 0xd0, 0xd1, 0xd2, 0xd3, 0xd4, 0};
+  oled_write_P(crkbd_logo, false);
 }
 
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-    if (!is_keyboard_master()) {
-        return OLED_ROTATION_180;
-    }
+  if (!is_keyboard_master()) {
+    return OLED_ROTATION_180;
+  }
 
-    return rotation;
+  return rotation;
 }
 
 bool oled_task_user(void) {
-    if (is_keyboard_master()) {
-        oled_render_anim();
-    } else {
-        render_logo();
-    }
-    return false;
+  if (is_keyboard_master()) {
+    oled_render_anim();
+  } else {
+    render_logo();
+  }
+  return false;
 }
 #endif
